@@ -1,0 +1,286 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "PowerAutomate",
+    "description": "CustomConnector"
+  },
+  "host": "apis.worksmobile.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/r/{APIID}/message/v1/bot": {
+      "post": {
+        "summary": "Bot の登録 1 (テナントに登録)",
+        "description": "トーク Bot をテナントに登録します",
+        "operationId": "RegisterBotTenant",
+        "parameters": [
+          {
+            "name": "APIID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "API ID"
+          },
+          {
+            "name": "consumerKey",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "consumerKey"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json; charset=UTF-8",
+            "description": "Content-Type",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "name"
+                },
+                "photoUrl": {
+                  "type": "string",
+                  "description": "photoUrl"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                },
+                "managers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "managers"
+                },
+                "useGroupJoin": {
+                  "type": "boolean",
+                  "description": "useGroupJoin",
+                  "title": "",
+                  "enum": [
+                    true,
+                    false
+                  ]
+                },
+                "useCallback": {
+                  "type": "boolean",
+                  "description": "useCallback",
+                  "title": "",
+                  "enum": [
+                    true,
+                    false
+                  ]
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/r/{APIID}/message/v1/bot/{botNo}/domain/{domainId}": {
+      "post": {
+        "summary": "Bot の登録 2 (ドメインに登録)",
+        "description": "トーク Bot をドメインに登録します",
+        "operationId": "RegisterBotDomain",
+        "parameters": [
+          {
+            "name": "APIID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "API ID"
+          },
+          {
+            "name": "botNo",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "botNo"
+          },
+          {
+            "name": "domainId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Domain ID"
+          },
+          {
+            "name": "consumerKey",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "consumerKey"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": " application/json; charset=UTF-8",
+            "description": "Content-Type",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "usePublic": {
+                  "type": "boolean",
+                  "description": "usePublic",
+                  "title": "",
+                  "default": true
+                },
+                "usePermission": {
+                  "type": "boolean",
+                  "description": "usePermission",
+                  "title": ""
+                }
+              },
+              "default": {
+                "usePublic": true,
+                "usePermission": false
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/r/{APIID}/message/v1/bot/{botNo}/message/push": {
+      "post": {
+        "summary": "メッセージ送信 (テキスト)",
+        "description": "トーク Bot を使ってテキストメッセージを送信します。<br>https://developers.worksmobile.com/jp/document/100500801?lang=ja",
+        "operationId": "SendMessage",
+        "parameters": [
+          {
+            "name": "APIID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "botNo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": " application/json",
+            "description": "Content-Type",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "consumerKey",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "consumerKey"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "accountId"
+                },
+                "content": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "type",
+                      "title": "",
+                      "default": "text",
+                      "x-ms-visibility": "internal"
+                    },
+                    "text": {
+                      "type": "string",
+                      "description": "text",
+                      "title": ""
+                    }
+                  },
+                  "description": "content",
+                  "required": [
+                    "type",
+                    "text"
+                  ]
+                }
+              },
+              "default": {
+                "accountId": "iwaoh@iwaohig",
+                "content": {
+                  "type": "text",
+                  "text": "hello"
+                }
+              },
+              "required": [
+                "content"
+              ]
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "API キー": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "security": [
+    {
+      "API キー": []
+    }
+  ],
+  "tags": []
+}
