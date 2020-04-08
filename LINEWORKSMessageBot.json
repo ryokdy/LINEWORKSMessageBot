@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "PowerAutomate",
-    "description": "CustomConnector"
+    "description": "LINE WORKS Bot API 用カスタム コネクタ"
   },
   "host": "apis.worksmobile.com",
   "basePath": "/",
