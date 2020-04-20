@@ -244,13 +244,6 @@
                   ]
                 }
               },
-              "default": {
-                "accountId": "iwaoh@iwaohig",
-                "content": {
-                  "type": "text",
-                  "text": "hello"
-                }
-              },
               "required": [
                 "content"
               ]
