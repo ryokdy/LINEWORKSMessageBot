@@ -221,6 +221,10 @@
                   "type": "string",
                   "description": "accountId"
                 },
+                "roomId": {
+                  "type": "string",
+                  "description": "roomId"
+                },
                 "content": {
                   "type": "object",
                   "properties": {
